@@ -179,6 +179,9 @@ class LingoParser {
 	private function realParse( $parser ) {
 		// Parse text identical to options used in includes/api/ApiParse.php
 		$params = $this->mApiParams;
+		if( $parser->getOutput() === null ) {
+			return;
+		}
 		$text = $params === null ? $parser->getOutput()->getText() : $parser->getOutput()->getText( [
 			'allowTOC' => !$params['disabletoc'],
 			'enableSectionEditLinks' => !$params['disableeditsection'],
